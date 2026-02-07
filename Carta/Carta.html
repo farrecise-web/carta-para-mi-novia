@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+
+    <title>Feliz San Valentín ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primario: #fff;
+            --fondo: #ffebf2;
+            --fondo-sobre: #ffe3ed;
+            --solapa-sobre: #ffccd5;
+            --cuerpo-sobre: #ffc1d1;
+            --sombra: rgba(0, 0, 0, 0.2);
+            --texto: #003049;
+            --corazon: #ff477e;
+        }
+
+        body {
+            background: var(--fondo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        h1 {
+            font-family: "Marck Script", serif;
+            text-align: center;
+            font-size: 60px;
+            margin-bottom: 50px;
+            color: #444;
+        }
+
+        .contenedor {
+            width: 400px;
+        }
+
+        .envoltura-sobre {
+            position: relative;
+            background-color: var(--fondo-sobre);
+            box-shadow: 0 0 40px var(--sombra);
+            border-radius: 15px;
+        }
+
+        .sobre {
+            position: relative;
+            width: 400px;
+            height: 300px;
+        }
+
+        .sobre::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 4;
+            border-top: 180px solid var(--solapa-sobre);
+            border-right: 200px solid transparent;
+            border-left: 200px solid transparent;
+            transform-origin: top;
+            transition: all 0.5s ease-in-out 0.7s;
+            border-radius: 10px;
+        }
+
+        .solapa-derecha {
+            position: absolute;
+            inset: 0;
+            clip-path: polygon(100% 0, 0 100%, 100% 100%);
+            background-color: var(--cuerpo-sobre);
+            border-radius: 10px;
+        }
+
+        .solapa-izquierda {
+            position: absolute;
+            inset: 0;
+            clip-path: polygon(0 0, 0 100%, 100% 100%);
+            background-color: var(--cuerpo-sobre);
+            border-radius: 10px;
+        }
+
+        .carta {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primario);
+            box-shadow: 0 0 5px var(--sombra);
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform .5s ease-in-out;
+        }
+
+        .contenido.doble {
+            display: flex;
+            gap: 10px;
+            height: 100%;
+        }
+
+        .panel {
+            width: 50%;
+            border: 3px dotted var(--texto);
+            padding: 10px;
+            overflow-y: auto;
+            font-family: "Gill Sans", Calibri, sans-serif;
+            color: var(--texto);
+        }
+
+        .panel.texto {
+            font-size: 12px;
+            line-height: 14px;
+            text-align: left;
+        }
+
+        .panel.imagen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .panel.imagen img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .corazon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: var(--corazon);
+            transform: translate(-50%,0) rotate(45deg);
+            transition: transform 0.5s ease-in-out 1s;
+            z-index: 999;
+            cursor: pointer;
+        }
+
+        .corazon::before,
+        .corazon::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: var(--corazon);
+            border-radius: 50%;
+        }
+
+        .corazon::before { top: -15px; }
+        .corazon::after { right: 15px; }
+
+        .abierto .sobre::before {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+
+        .abierto .corazon {
+            transform: rotate(90deg);
+        }
+
+        .carta.mostrar-carta {
+            transform: translateY(-290px);
+        }
+
+        .carta.abierta {
+            z-index: 10000;
+        }
+
+        .envoltura-sobre.desactivar-sobre .sobre::before {
+            pointer-events: none;
+        }
+
+        @media (max-width:400px) {
+            .contenedor { width: 300px; }
+            .sobre { width: 300px; height: 250px; }
+
+            .sobre::before {
+                border-top:150px solid var(--solapa-sobre);
+                border-right: 150px solid transparent;
+                border-left: 150px solid transparent;
+            }
+
+            .contenido.doble {
+                flex-direction: column;
+            }
+
+            .panel {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Feliz dia mi Nena Hermosa! ❤️</h1>
+
+<div class="contenedor">
+    <div class="envoltura-sobre">
+        <div class="sobre">
+
+            <div class="carta">
+                <div class="contenido doble">
+
+                    <div class="panel texto">
+                        <strong>Mi niña hermosa</strong>
+                        <p>
+                            Amor bello, mi bello ángel 😇✨, mi sol ☀️, mi bebé hermoso 🥺💖
+                            No hay un solo día en el que no agradezca tenerte en mi vida
+                            Llegaste para iluminarlo todo y para llenar mi corazón de amor
+                            <br><br>
+                            Me encanta tu carita 😍
+                            Esos ojitos tan hermosos que me iluminan y me hacen sentir en casa ✨👀
+                            Tus labios que me enloquecen y que no dejo de amar 💋
+                            Tus cachetitos tan bonitos que me dan ganas de besarlos sin parar 🥰
+                            Esa narisita tuya que amo con todo mi corazón 🤍
+                            <br><br>
+                            Todo en ti me encanta 💘
+                            Cada detalle, cada sonrisa, cada gesto tuyo
+                            Eres mi sol, mi paz, mi alegría y mi lugar seguro
+                            <br>
+                            Feliz San Valentín, mi amor 💝
+                            <br><br>
+                            Te amo más de lo que las palabras pueden explicar 💞
+                            <br><br>
+                            Atentamente: Tu ingeniero y Hombre que te amara por siempre 
+                        </p>
+                    </div>
+
+                    <div class="panel imagen">
+                        <img
+                            src="https://lh3.googleusercontent.com/d/1KtQAQnTwsqjiXyxX3x0X-fWsacN_bMmh"
+                            alt="Carta especial">
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="corazon"></div>
+        <div class="solapa-derecha"></div>
+        <div class="solapa-izquierda"></div>
+    </div>
+</div>
+
+<script>
+    const envoltura = document.querySelector(".envoltura-sobre");
+    const carta = document.querySelector(".carta");
+
+    function abrirCarta() {
+        envoltura.classList.add("abierto");
+
+        if (!carta.classList.contains("abierta")) {
+            setTimeout(() => {
+                carta.classList.add("mostrar-carta");
+
+                setTimeout(() => {
+                    carta.classList.remove("mostrar-carta");
+                    carta.classList.add("abierta");
+                }, 500);
+            }, 800);
+        }
+    }
+
+    setTimeout(() => {
+        abrirCarta();
+    }, 5000);
+
+    document.addEventListener("click", (e) => {
+        if (
+            e.target.matches(".sobre") ||
+            e.target.matches(".solapa-derecha") ||
+            e.target.matches(".solapa-izquierda") ||
+            e.target.matches(".corazon")
+        ) {
+            abrirCarta();
+        }
+    });
+</script>
+
+
+</body>
+</html>
